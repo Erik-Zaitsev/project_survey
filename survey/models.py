@@ -3,6 +3,8 @@ from user.models import CustomUser, CustomUserManager
 
 # Create your models here.
 class Survey(models.Model):
+    '''Класс для описания модели Опроса'''
+    
     STATUS_SURVEY_CHOISES = (
         ('available', 'Доступен'),
         ('development', 'В разработке'),
@@ -26,6 +28,8 @@ class Survey(models.Model):
     
     
 class Question(models.Model):
+    '''Класс для описания модели Вопроса'''
+    
     QUESTION_TYPE_CHOICES = (
         ('Txt', 'Развёрнутый ответ'),
         ('OneChoice', 'Одиночный выбор'),
@@ -51,6 +55,8 @@ class Question(models.Model):
     
     
 class Answer(models.Model):
+    '''Класс для описания модели Ответа'''
+    
     user = models.ForeignKey(CustomUser, verbose_name='Пользователь', on_delete=models.CASCADE)
     question = models.ForeignKey(Question, verbose_name='Вопрос', on_delete=models.CASCADE)
     answer_text = models.TextField(verbose_name='Ответ')

@@ -5,6 +5,8 @@ from django.contrib.auth.models import PermissionsMixin
 
 # Create your models here.
 class CustomUserManager(BaseUserManager):
+    '''Класс для описания модели Менеджера пользователей'''
+    
     use_in_migrate = True
     
     def create_user(self, email, username, password):
@@ -69,6 +71,8 @@ class CustomUserManager(BaseUserManager):
     
     
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    '''Класс для описания модели Пользователя'''
+    
     REQUIRED_FIELDS = ['username', 'password']
     USERNAME_FIELD = 'email'
     objects = CustomUserManager()
