@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     
     'rest_framework'
     'survey',
-    'user,'
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -83,8 +83,12 @@ WSGI_APPLICATION = 'project_survey.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': getenv(DATABASE_default_ENGINE),
+        'NAME': getenv(DATABASE_default_NAME),
+        'USER': getenv(DATABASE_default_USER),
+        'PASSWORD': getenv(DATABASE_default_PASSWORD),
+        'HOST': getenv(DATABASE_default_HOST),
+        'PORT': getenv(DATABASE_default_PORT),
     }
 }
 
