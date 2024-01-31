@@ -1,19 +1,12 @@
-from django.shortcuts import render
 from rest_framework import views, generics
 from rest_framework.response import Response
-from rest_framework.pagination import PageNumberPagination
 from .models import Survey, Question, Answer
 from .serializers import SurveySerializer, QuestionSerializer, AnswerSerializer
 from django.forms import model_to_dict
+from services import APIViewPagination
 
 
 # Create your views here.
-class APIViewPagination(PageNumberPagination):
-    page_size = 20
-    page_size_query_param = 'page_size'
-    max_page_size = 100
-
-
 class SurveyListAPIView(generics.ListAPIView):
     queryset = Survey.objects.all()
     serializer_class = SurveySerializer

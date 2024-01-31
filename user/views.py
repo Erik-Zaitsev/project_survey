@@ -2,7 +2,7 @@ from rest_framework import generics, views
 from .permissions import IsSuperuserPermission
 from .models import CustomUser
 from .serializers import CustomUserSerializer
-from survey.views import APIViewPagination
+from services import APIViewPagination
 
 
 # Create your views here.
