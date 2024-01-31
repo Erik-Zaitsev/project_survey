@@ -33,7 +33,6 @@ class CustomUserAdmin(UserAdmin):
         {'fields': ('date_joined', 'last_login',)}),
         ('Разрешения',
         {'fields': ('is_staff', 'is_superuser',)}),
-        
     )
     
     add_fieldsets = (
@@ -43,7 +42,6 @@ class CustomUserAdmin(UserAdmin):
         {'fields': ('date_joined', 'last_login',)}),
         ('Разрешения',
         {'fields': ('is_staff', 'is_superuser',)}),
-        
     )
     
     
