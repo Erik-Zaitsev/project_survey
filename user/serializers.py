@@ -6,6 +6,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = [
+            'id',
             'username',
             'email',
             'date_joined',
@@ -14,5 +15,11 @@ class CustomUserSerializer(serializers.ModelSerializer):
             'is_superuser',
             'is_active',
         ]
+        
+    def create(self, validated_data):
+        return CustomUser.objects.create(**validated_data)
+    
+    def update():
+        pass
         
     
