@@ -16,16 +16,35 @@ class CustomUserListAPIView(generics.ListAPIView):
 class CustomUserAPIView(views.APIView):
     serializer_class = CustomUserSerializer
     permission_classes = (IsSuperuserPermission, )
-    pagination_class = APIViewPagination
     
     def get(self, request, pk):
-        queryset = CustomUser.objects.get(pk=pk)
-        return Response(
-            {'result': CustomUserSerializer(queryset).data}
-        )
+        if not pk:
+            return Response({'result': 'Добавьте к URL id записи!'})
+        
+        try:
+            instance = CustomUser.objects.get(pk=pk)
+        except:
+            return Response({'result': 'Объект с данным id не найден!'})
+            
+        return Response({'result': CustomUserSerializer(instance).data})
+        
         
     def post(self, request):
         serializer = CustomUserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({'result': serializer.data})
+    
+    
+    def delete(self, request, pk):
+        if not pk:
+            return Response({'result': 'Добавьте к URL id записи!'})
+        
+        try:
+            instance = CustomUser.object.get(pk=pk)
+        except:
+            return Response({'result': 'Объект с данным id не найден!'})
+        
+        CustomUser.objects.get(pk=pk).delete()
+        return Response({'result': 'Объект удалён!'})
+        

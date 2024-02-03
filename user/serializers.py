@@ -19,7 +19,3 @@ class CustomUserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return CustomUser.objects.create(**validated_data)
     
-    def update():
-        pass
-        
-    
