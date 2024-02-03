@@ -12,9 +12,9 @@ class SurveyAdmin(admin.ModelAdmin):
         'repeat_passing',
     ]
     
-    readonly_fields = ['date_creation',]
-    
     list_filter = ['status', 'repeat_passing',]
+    
+    readonly_fields = ['date_creation',]
     
     search_fields = ['title',]
     
