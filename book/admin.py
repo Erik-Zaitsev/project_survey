@@ -1,13 +1,22 @@
 from django.contrib import admin
-from .models import Book
+from .models import Book, Author
 
 
 # Register your models here.
+@admin.register(Author)
+class AuthorAdmin(admin.ModelAdmin):
+    list_display = ['name',]
+    
+    search_fields = ['name',]
+    
+    search_help_text = 'Поиск по полю: Имя и фамилия'
+
+
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     list_display = [
         'title',
-        'author',
+        # 'author',
         'year_publication',
         'genre',
         'pages',
@@ -28,18 +37,23 @@ class BookAdmin(admin.ModelAdmin):
         'year_publication',
     ]
     
-    search_help_text = 'Поиск книги по полям: название, автор, год выпуска'
+    search_help_text = 'Поиск книги по полям: Название, Автор, Год выпуска'
     
     fieldsets = (
         ('Основная информация',
         {'fields': ('title', 'author','year_publication',)}),
         ('Дополнительная информация',
-        {'fields': ('genre', 'pages', 'circulation', 'original_language', 'age_limit',)}),        
+        {'fields': ('genre', 'pages', 'circulation', 'original_language', 'age_limit', 'image_cover',)}),        
     )
     
     add_fieldsets = (
         ('Основная информация',
         {'fields': ('title', 'author','year_publication',)}),
         ('Дополнительная информация',
-        {'fields': ('genre', 'pages', 'circulation', 'original_language', 'age_limit',)}),        
+        {'fields': ('genre', 'pages', 'circulation', 'original_language', 'age_limit', 'image_cover',)}),        
     )
+    
+    
+
+    
+    

@@ -10,6 +10,7 @@ class SurveyAdmin(admin.ModelAdmin):
         'creator',
         'status',
         'repeat_passing',
+        'book',
     ]
     
     list_filter = ['status', 'repeat_passing',]
