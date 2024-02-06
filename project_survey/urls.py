@@ -16,9 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from book.views import HomePage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/surveys/', include('survey.urls')),
     path('api/v1/users/', include('user.urls')),
+    path('main/', HomePage.as_view()),
 ]
