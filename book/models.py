@@ -55,6 +55,7 @@ class Book(models.Model):
     year_publication = models.PositiveSmallIntegerField(verbose_name='Год выпуска')
     genre = models.CharField(verbose_name='Жанр', choices=BOOK_GENRE_CHOICES, 
                              max_length=100, default='For children and parents')
+    short_description = models.TextField(verbose_name='Краткое описание', null=True)
     pages = models.PositiveSmallIntegerField(verbose_name='Страницы')
     circulation = models.PositiveIntegerField(verbose_name='Тираж')
     original_language = models.CharField(verbose_name='Язык издания', choices=BOOK_LANGUAGE_CHOICES, 

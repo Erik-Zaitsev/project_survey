@@ -41,14 +41,14 @@ class BookAdmin(admin.ModelAdmin):
     
     fieldsets = (
         ('Основная информация',
-        {'fields': ('title', 'author','year_publication',)}),
+        {'fields': ('title', 'author','year_publication', 'short_description',)}),
         ('Дополнительная информация',
         {'fields': ('genre', 'pages', 'circulation', 'original_language', 'age_limit', 'image_cover',)}),        
     )
     
     add_fieldsets = (
         ('Основная информация',
-        {'fields': ('title', 'author','year_publication',)}),
+        {'fields': ('title', 'author','year_publication', 'short_description',)}),
         ('Дополнительная информация',
         {'fields': ('genre', 'pages', 'circulation', 'original_language', 'age_limit', 'image_cover',)}),        
     )

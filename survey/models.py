@@ -1,6 +1,6 @@
 from django.db import models
 from user.models import CustomUser, CustomUserManager
-from book.models import Book
+from book.models import Book, Author
 
 # Create your models here.
 class Survey(models.Model):
@@ -18,8 +18,9 @@ class Survey(models.Model):
     status = models.CharField(verbose_name='Статус опроса', max_length=20,
                               choices=STATUS_SURVEY_CHOISES, default='close')
     repeat_passing = models.BooleanField(verbose_name='Повторное прохождение', default=False)
-    book = models.OneToOneField(Book, verbose_name='Книга', on_delete=models.CASCADE)
-    
+    book = models.ManyToManyField(Book, verbose_name='Книга', blank=True, default='Нет книги')
+    author = models.ManyToManyField(Author, verbose_name='Автор', blank=True, default='Нет автора')
+        
     class Meta:
         verbose_name = 'Опрос'
         verbose_name_plural = 'Опросы'
