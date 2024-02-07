@@ -62,8 +62,8 @@ class Book(models.Model):
                              max_length=50, default='rus')
     age_limit = models.CharField(verbose_name='Возрастное ограничение', choices=BOOK_AGE_LIMIT_CHOICES, 
                              max_length=30, default='limit(0+)')
-    image_cover = models.ImageField(verbose_name='Обложка', upload_to='book/static/book/images/',
-                             default='no_cover.jpeg')
+    # image_cover = models.ImageField(verbose_name='Обложка', upload_to='book/static/book/images/',
+    #                          default='no_cover.jpeg')
     
     class Meta:
         verbose_name = 'Книга'

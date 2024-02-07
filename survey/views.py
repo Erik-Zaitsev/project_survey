@@ -6,10 +6,12 @@ from .serializers import (SurveyListAndGetSerializer, SurveyPostAndPatchSerializ
                           AnswerListAndGetSerializer, AnswerPostAndPatchSerializer)
 from django.forms import model_to_dict
 from services import APIViewPagination
+from rest_framework.permissions import IsAuthenticated
 
 
 # Create your views here.            
 class SurveyListAndCreateAPIView(views.APIView):
+    permission_classes = (IsAuthenticated, )
     def get(self, request, *args, **kwargs):
         queryset = Survey.objects.all()
         return Response({'result': SurveyPostAndPatchSerializer(queryset, many=True).data})
@@ -23,6 +25,7 @@ class SurveyListAndCreateAPIView(views.APIView):
         
         
 class SurveyGetPatchDeleteAPIView(views.APIView):
+    permission_classes = (IsAuthenticated, )
     def get(self, request, *args, **kwargs):
         pk = kwargs.get('pk', None)
         if not pk:
